@@ -1,15 +1,15 @@
 PODS:
   - boost-for-react-native (1.63.0)
-  - DoubleConversion (1.1.5)
+  - DoubleConversion (1.1.6)
   - Folly (2016.10.31.00):
     - boost-for-react-native
     - DoubleConversion
     - glog
-  - glog (0.3.4)
+  - glog (0.3.5)
   - Onfido (10.0.0)
   - React (0.57.7):
     - React/Core (= 0.57.7)
-  - react-native-onfido-sdk (1.0.0):
+  - react-native-onfido-sdk (0.0.1):
     - Onfido
     - React
   - React/Core (0.57.7):
@@ -47,7 +47,9 @@ PODS:
   - yoga (0.57.7.React)
 
 DEPENDENCIES:
+  - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
   - Folly (from `../node_modules/react-native/third-party-podspecs/Folly.podspec`)
+  - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
   - react-native-onfido-sdk (from `../../`)
   - React/Core (from `../node_modules/react-native`)
   - React/CxxBridge (from `../node_modules/react-native`)
@@ -61,13 +63,15 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - boost-for-react-native
-    - DoubleConversion
-    - glog
     - Onfido
 
 EXTERNAL SOURCES:
+  DoubleConversion:
+    :podspec: "../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec"
   Folly:
     :podspec: "../node_modules/react-native/third-party-podspecs/Folly.podspec"
+  glog:
+    :podspec: "../node_modules/react-native/third-party-podspecs/glog.podspec"
   React:
     :path: "../node_modules/react-native"
   react-native-onfido-sdk:
@@ -77,14 +81,14 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
-  DoubleConversion: e22e0762848812a87afd67ffda3998d9ef29170c
+  DoubleConversion: bb338842f62ab1d708ceb63ec3d999f0f3d98ecd
   Folly: c89ac2d5c6ab169cd7397ef27485c44f35f742c7
-  glog: 1de0bb937dccdc981596d3b5825ebfb765017ded
+  glog: e8acf0ebbf99759d3ff18c86c292a5898282dcde
   Onfido: eb3bde6295f0dc6dd334b9eb01626d2bad5d3c1d
   React: 1fe0eb13d90b625d94c3b117c274dcfd2e760e11
   react-native-onfido-sdk: 9c1a642c278242f805b44b7a97b8690d46ab556c
   yoga: b1ce48b6cf950b98deae82838f5173ea7cf89e85
 
-PODFILE CHECKSUM: f1fb187c22410acaeb7d632a73ba6f73a3eab85c
+PODFILE CHECKSUM: 25afdebd16122a99467df11c826003719b56ac7a
 
 COCOAPODS: 1.5.3
