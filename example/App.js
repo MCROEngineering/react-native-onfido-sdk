@@ -7,7 +7,7 @@
 
 import React, {Component} from 'react';
 import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
-import RNOnfidoSdk from '../index';
+import RNOnfidoSdk from 'react-native-onfido-sdk';
 
 const data = [{
   id: 0,
@@ -38,8 +38,7 @@ export default class App extends Component {
     const params = {
       token: mobileSdkToken,
       applicantId,
-      successCallback: this._onfidoSuccessResponse,
-      errorCallback: this._onfidoErrorResponse
+      flowSteps: [RNOnfidoSdk.DocumentTypeNationalIdentityCard]
     };
 
     switch (item.id) {
@@ -52,8 +51,7 @@ export default class App extends Component {
       default: break;
     }
 
-    console.log(RNOnfidoSdk);
-    RNOnfidoSdk.startSDK(params);
+    RNOnfidoSdk.startSDK(params, this._onfidoSuccessResponse, this._onfidoErrorResponse);
   };
 
   _renderItem = item => (

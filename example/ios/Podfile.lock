@@ -50,7 +50,7 @@ DEPENDENCIES:
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
   - Folly (from `../node_modules/react-native/third-party-podspecs/Folly.podspec`)
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
-  - react-native-onfido-sdk (from `../../`)
+  - react-native-onfido-sdk (from `../node_modules/react-native-onfido-sdk`)
   - React/Core (from `../node_modules/react-native`)
   - React/CxxBridge (from `../node_modules/react-native`)
   - React/DevSupport (from `../node_modules/react-native`)
@@ -75,7 +75,7 @@ EXTERNAL SOURCES:
   React:
     :path: "../node_modules/react-native"
   react-native-onfido-sdk:
-    :path: "../../"
+    :path: "../node_modules/react-native-onfido-sdk"
   yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -89,6 +89,6 @@ SPEC CHECKSUMS:
   react-native-onfido-sdk: 9c1a642c278242f805b44b7a97b8690d46ab556c
   yoga: b1ce48b6cf950b98deae82838f5173ea7cf89e85
 
-PODFILE CHECKSUM: 25afdebd16122a99467df11c826003719b56ac7a
+PODFILE CHECKSUM: 0c2cd26d7135ffdb9dbc279719a7b9a0560a7a5a
 
 COCOAPODS: 1.5.3
