@@ -11,6 +11,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CustomFlowViewController : UIViewController
 
+- (id) initWithParams:(id)params;
+
 @end
 
 NS_ASSUME_NONNULL_END

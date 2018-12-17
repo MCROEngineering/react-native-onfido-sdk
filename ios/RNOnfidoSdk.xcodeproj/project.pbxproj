@@ -28,7 +28,6 @@
 		134814201AA4EA6300B7C361 /* libRNOnfidoSdk.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNOnfidoSdk.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		940830EE21BE70E900CECC45 /* Onfido.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Onfido.framework; path = ../example/ios/Pods/Onfido/Onfido.framework; sourceTree = "<group>"; };
 		94E2D35E21C3D2E90040BF13 /* CustomFlowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomFlowViewController.m; sourceTree = "<group>"; };
-		94E2D35F21C3D2E90040BF13 /* CustomFlowViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomFlowViewController.xib; sourceTree = "<group>"; };
 		94E2D36021C3D2E90040BF13 /* ONFlowConfigBuilder+FlowConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ONFlowConfigBuilder+FlowConfiguration.h"; sourceTree = "<group>"; };
 		94E2D36121C3D2E90040BF13 /* ONFlowConfigBuilder+FlowConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ONFlowConfigBuilder+FlowConfiguration.m"; sourceTree = "<group>"; };
 		94E2D36221C3D2E90040BF13 /* CustomFlowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomFlowViewController.h; sourceTree = "<group>"; };
@@ -60,7 +59,6 @@
 			children = (
 				94E2D36221C3D2E90040BF13 /* CustomFlowViewController.h */,
 				94E2D35E21C3D2E90040BF13 /* CustomFlowViewController.m */,
-				94E2D35F21C3D2E90040BF13 /* CustomFlowViewController.xib */,
 				94E2D36021C3D2E90040BF13 /* ONFlowConfigBuilder+FlowConfiguration.h */,
 				94E2D36121C3D2E90040BF13 /* ONFlowConfigBuilder+FlowConfiguration.m */,
 				B3E7B5881CC2AC0600A0062D /* RNOnfidoSdk.h */,

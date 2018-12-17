@@ -38,7 +38,7 @@ export default class App extends Component {
     const params = {
       token: mobileSdkToken,
       applicantId,
-      flowSteps: [RNOnfidoSdk.DocumentTypeNationalIdentityCard]
+      flowSteps: [RNOnfidoSdk.DocumentTypePassport, RNOnfidoSdk.DocumentTypeNationalIdentityCard, RNOnfidoSdk.DocumentTypeResidencePermit]
     };
 
     switch (item.id) {

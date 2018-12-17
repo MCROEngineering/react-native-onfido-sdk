@@ -8,6 +8,7 @@
 
 #import <React/RCTConvert.h>
 #import <Onfido/Onfido-Swift.h>
+@class RNOnfidoSdk;
 
 typedef void(^successCallback)(ONFlowConfig *);
 typedef void(^errorCallback)(NSError *);

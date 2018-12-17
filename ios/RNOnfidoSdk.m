@@ -5,8 +5,10 @@
 
 #import "ONFlowConfigBuilder+FlowConfiguration.h"
 #import "RNOnfidoSdk.h"
+#import "CustomFlowViewController.h"
 
 @interface RNOnfidoSdk () {
+    id _params;
     UIViewController *_rootViewController;
     RCTResponseSenderBlock _successCallback;
     RCTResponseErrorBlock _errorCallback;
@@ -17,18 +19,30 @@
     
 RCT_EXPORT_MODULE();
 
-RCT_EXPORT_METHOD(startSDK:(id)json) {
-    RNOnfidoSdk *sdk = [[RNOnfidoSdk alloc] initWithParams:json];
-    [sdk run:json];
+- (NSDictionary *)constantsToExport
+    {
+        return @{
+                 @"DocumentTypePassport" : @(0),
+                 @"DocumentTypeDrivingLicence" : @(1),
+                 @"DocumentTypeNationalIdentityCard" : @(2),
+                 @"DocumentTypeResidencePermit" : @(3),
+                 @"DocumentTypeAll" : @(4)
+                 };
+    };
+
+    
+RCT_EXPORT_METHOD(startSDK:(id)json successCallback:(RCTResponseSenderBlock)successCallback errorCallback:(RCTResponseErrorBlock)errorCallback) {
+    RNOnfidoSdk *sdk = [[RNOnfidoSdk alloc] initWithParams:json successCallback:successCallback errorCallback:errorCallback];
+    [sdk run];
 }
 
-- (id)initWithParams:(id)json {
+- (id)initWithParams:(id)params successCallback:(RCTResponseSenderBlock)successCallback errorCallback:(RCTResponseErrorBlock)errorCallback {
     self = [super init];
 
     if (self) {
-        NSDictionary *dictionary = [RCTConvert NSDictionary:json];
-        _successCallback = dictionary[@"successCallback"];
-        _errorCallback = dictionary[@"errorCallback"];
+        _successCallback = successCallback;
+        _errorCallback = errorCallback;
+        _params = params;
     }
 
     return self;
@@ -37,7 +51,7 @@ RCT_EXPORT_METHOD(startSDK:(id)json) {
 /**
  Runs Onfido SDK Flow
  */
-- (void) run:(id)params {
+- (void) run {
 
     dispatch_async(dispatch_get_main_queue(), ^{
 
@@ -45,13 +59,27 @@ RCT_EXPORT_METHOD(startSDK:(id)json) {
         UIWindow *window = [[UIApplication sharedApplication] keyWindow];
         self->_rootViewController = (UIViewController *)window.rootViewController;
         
-        [ONFlowConfigBuilder create:params successCallback:^(ONFlowConfig *config) {
-            [self runSDKFlowWithConfig:config];
-        } errorCallback:^(NSError *error) {
-            UIAlertController *popup = [self createErrorPopupWithMessage:[NSString stringWithFormat:@"unable to run flow %@", [[error userInfo] valueForKey:@"message"]]];
-            
-            [self->_rootViewController presentViewController:popup animated:YES completion:NULL];
-        }];
+        NSDictionary *dictionary = [RCTConvert NSDictionary:self->_params];
+        @try {
+            NSArray *flowSteps = dictionary[@"flowSteps"];
+            if (flowSteps && flowSteps.count > 1) {
+                CustomFlowViewController *customFlowVC = [[CustomFlowViewController alloc] initWithParams:self->_params];
+                UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController: customFlowVC];
+                [navController.navigationBar setBarTintColor:UIColor.whiteColor];
+                [navController.navigationBar setValue:@(YES) forKeyPath:@"hidesShadow"];
+                [self->_rootViewController presentViewController:navController animated:true completion:nil];
+            } else {
+                [ONFlowConfigBuilder create:self->_params successCallback:^(ONFlowConfig *config) {
+                    [self runSDKFlowWithConfig:config];
+                } errorCallback:^(NSError *error) {
+                    UIAlertController *popup = [self createErrorPopupWithMessage:[error localizedDescription]];
+                    [self->_rootViewController presentViewController:popup animated:YES completion:NULL];
+                }];
+            }
+        } @catch (NSException *e) {
+            self->_errorCallback([NSError errorWithDomain:@"invalid_params" code:100 userInfo:@{                                                                                               NSLocalizedDescriptionKey: @"Invalid flowSteps type"
+                                                                                               }]);
+        }
     });
 }
 
@@ -69,7 +97,6 @@ RCT_EXPORT_METHOD(startSDK:(id)json) {
     UIViewController *flowVC = [flow runAndReturnError:&runError];
 
     if (runError == NULL) { //more on run exceptions https://github.com/onfido/onfido-ios-sdk#run-exceptions
-
         [_rootViewController presentViewController:flowVC animated:YES completion:nil];
     } else {
         // Flow may not run
