@@ -1,3 +1,5 @@
 rootProject.name = 'example'
+include ':react-native-onfido-sdk'
+project(':react-native-onfido-sdk').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-onfido-sdk/android')
 
 include ':app'

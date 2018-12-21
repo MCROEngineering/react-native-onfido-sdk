@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="#fff"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:textColor="#263846"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginLeft="16dp"
+        android:textSize="25sp"
+        android:text="@string/select_a_document" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:layout_marginBottom="32dp"
+        android:layout_marginLeft="16dp"
+        android:text="@string/will_take_a_picture_of_it" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="#dcdcdc"
+        android:orientation="horizontal">
+    </LinearLayout>
+
+    <include
+        layout="@layout/document_type"
+        app:title="@{@string/passport}"
+        android:id="@+id/button_passport"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="#dcdcdc"
+        android:orientation="horizontal">
+    </LinearLayout>
+
+    <include
+        layout="@layout/document_type"
+        app:title="@{@string/driver_license}"
+        android:id="button_driver_license"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="#dcdcdc"
+        android:orientation="horizontal">
+    </LinearLayout>
+
+    <include
+        layout="@layout/document_type"
+        app:title="@{@string/national_identity_card}"
+        android:id="@+id/button_national_identity_card"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="#dcdcdc"
+        android:orientation="horizontal">
+    </LinearLayout>
+
+    <include
+        layout="@layout/document_type"
+        app:title="@{@string/residence_permit_card}"
+        android:id="@+id/button_residence_permit_card"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="#dcdcdc"
+        android:orientation="horizontal">
+
+    </LinearLayout>
+
+</LinearLayout>
+</layout>
