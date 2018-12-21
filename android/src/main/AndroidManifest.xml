@@ -2,5 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.reactlibrary">
 
+    <application>
+        <activity android:name=".OnfidoCustomDocumentTypesActivity" />
+    </application>
+
 </manifest>
   

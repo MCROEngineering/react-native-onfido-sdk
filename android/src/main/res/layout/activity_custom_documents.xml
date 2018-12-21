@@ -51,7 +51,7 @@
     <include
         layout="@layout/document_type"
         app:title="@{@string/driver_license}"
-        android:id="button_driver_license"
+        android:id="@+id/button_driver_license"
         />
 
     <LinearLayout
