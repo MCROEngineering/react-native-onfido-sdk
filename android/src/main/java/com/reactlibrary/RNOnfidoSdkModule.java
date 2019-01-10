@@ -9,7 +9,6 @@ import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.Callback;
-import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.ReadableMap;
 import com.onfido.android.sdk.capture.Onfido;
 import com.onfido.android.sdk.capture.ExitCode;
@@ -26,6 +25,7 @@ import com.onfido.android.sdk.capture.upload.Captures;
 import android.support.annotation.Nullable;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -36,8 +36,8 @@ public class RNOnfidoSdkModule extends ReactContextBaseJavaModule {
   private final Onfido client;
   private Callback mSuccessCallback;
   private Callback mErrorCallback;
-  private static final int REQUEST_CODE_DOCUMENT_TYPE = 1;
-  private static final int REQUEST_CODE_ONFIDO = 2;
+  public static final int REQUEST_CODE_DOCUMENT_TYPE = 1;
+  public static final int REQUEST_CODE_ONFIDO = 2;
   private ReadableMap mParams;
 
   private final ActivityEventListener mActivityEventListener = new BaseActivityEventListener() {
@@ -66,7 +66,10 @@ public class RNOnfidoSdkModule extends ReactContextBaseJavaModule {
         Activity currentActivity = getCurrentActivity();
 
         HashMap m = mParams.toHashMap();
-        int[] docTypes = {1};
+        int docType = data.getIntExtra("documentType", 0);
+        ArrayList<Double> docTypes = new ArrayList<>();
+        docTypes.add(1.0 * docType);
+//        int[] docTypes = {docType};
         m.put("documentTypes", docTypes);
         OnfidoConfig c = getOnfidoConfig(m);
         client.startActivityForResult(currentActivity, REQUEST_CODE_ONFIDO, c);
@@ -139,7 +142,7 @@ public class RNOnfidoSdkModule extends ReactContextBaseJavaModule {
 
   private Boolean isCustomFlow(HashMap params) {
     if (isDefaultFlow(params)) {
-      return true;
+      return false;
     }
     ArrayList documentTypes = (ArrayList) params.get("documentTypes");
 
@@ -177,12 +180,17 @@ public class RNOnfidoSdkModule extends ReactContextBaseJavaModule {
 
     if (this.isCustomFlow(paramsMap)) {
       Intent intent = new Intent(currentActivity, OnfidoCustomDocumentTypesActivity.class);
-//      intent.putExtra("documentTypes", )
+      ArrayList docTypes = (ArrayList) paramsMap.get("documentTypes");
+      int[] documentTypes = new int[docTypes.size()];
+      for(int i = 0; i < docTypes.size(); i++) {
+        Double docTypeValue = (Double) docTypes.get(i);
+        documentTypes[i] = docTypeValue.intValue();
+      }
+      intent.putExtra("documentTypes", documentTypes);
       currentActivity.startActivityForResult(intent, REQUEST_CODE_DOCUMENT_TYPE);
     } else {
       OnfidoConfig onfidoConfig = this.getOnfidoConfig(paramsMap);
-      int activityRequestCode = this.isDefaultFlow(paramsMap) ? REQUEST_CODE_ONFIDO : REQUEST_CODE_DOCUMENT_TYPE;
-      client.startActivityForResult(currentActivity, activityRequestCode, onfidoConfig);
+      client.startActivityForResult(currentActivity, REQUEST_CODE_ONFIDO, onfidoConfig);
     }
   }
 }

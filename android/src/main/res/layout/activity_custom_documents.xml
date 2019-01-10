@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:background="#fff"
@@ -37,56 +35,22 @@
 
     <include
         layout="@layout/document_type"
-        app:title="@{@string/passport}"
         android:id="@+id/button_passport"
-        />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="3dp"
-        android:background="#dcdcdc"
-        android:orientation="horizontal">
-    </LinearLayout>
+    />
 
     <include
         layout="@layout/document_type"
-        app:title="@{@string/driver_license}"
         android:id="@+id/button_driver_license"
-        />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="3dp"
-        android:background="#dcdcdc"
-        android:orientation="horizontal">
-    </LinearLayout>
+    />
 
     <include
         layout="@layout/document_type"
-        app:title="@{@string/national_identity_card}"
         android:id="@+id/button_national_identity_card"
-        />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="3dp"
-        android:background="#dcdcdc"
-        android:orientation="horizontal">
-    </LinearLayout>
+    />
 
     <include
         layout="@layout/document_type"
-        app:title="@{@string/residence_permit_card}"
         android:id="@+id/button_residence_permit_card"
-        />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="3dp"
-        android:background="#dcdcdc"
-        android:orientation="horizontal">
-
-    </LinearLayout>
+    />
 
 </LinearLayout>
-</layout>
