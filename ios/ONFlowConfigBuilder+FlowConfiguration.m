@@ -14,7 +14,7 @@
     NSDictionary *dictionary = [RCTConvert NSDictionary:params];
     NSString *token = dictionary[@"token"];
     NSString *applicantId = dictionary[@"applicantId"];
-    id flowSteps = dictionary[@"flowSteps"];
+    id documentTypes = dictionary[@"documentTypes"];
     
     NSString *message;
     if (!token) {
@@ -25,8 +25,8 @@
         message = @"No applicantId specified";
     }
     
-    if (flowSteps && ![flowSteps isKindOfClass:[NSArray class]]) {
-        message = @"invalid flowSteps type";
+    if (documentTypes && ![documentTypes isKindOfClass:[NSArray class]]) {
+        message = @"invalid documentTypes type";
     }
     
     if (message) {
@@ -49,13 +49,13 @@
     NSDictionary *dictionary = [RCTConvert NSDictionary:json];
     NSString *token = dictionary[@"token"];
     NSString *applicantId = dictionary[@"applicantId"];
-    NSArray *flowSteps =dictionary[@"flowSteps"];
+    NSArray *documentTypes =dictionary[@"documentTypes"];
 
     ONFlowConfigBuilder *configBuilder = [ONFlowConfig builder];
     [configBuilder withToken:token];
     [configBuilder withApplicantId:applicantId];
-    if (flowSteps && flowSteps.count && [flowSteps[0] integerValue] != 4) {
-        [configBuilder withDocumentStepOfType:[flowSteps[0] integerValue] andCountryCode:@""];
+    if (documentTypes && documentTypes.count && [documentTypes[0] integerValue] != 4) {
+        [configBuilder withDocumentStepOfType:[documentTypes[0] integerValue] andCountryCode:@""];
     } else {
         [configBuilder withDocumentStep];
     }

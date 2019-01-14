@@ -6,10 +6,10 @@ PODS:
     - DoubleConversion
     - glog
   - glog (0.3.5)
-  - Onfido (10.0.0)
+  - Onfido (10.2.0)
   - React (0.57.7):
     - React/Core (= 0.57.7)
-  - react-native-onfido-sdk (0.0.1):
+  - react-native-onfido-sdk (0.0.3):
     - Onfido
     - React
   - React/Core (0.57.7):
@@ -84,7 +84,7 @@ SPEC CHECKSUMS:
   DoubleConversion: bb338842f62ab1d708ceb63ec3d999f0f3d98ecd
   Folly: c89ac2d5c6ab169cd7397ef27485c44f35f742c7
   glog: e8acf0ebbf99759d3ff18c86c292a5898282dcde
-  Onfido: eb3bde6295f0dc6dd334b9eb01626d2bad5d3c1d
+  Onfido: be1599fe997fd7600855b8db2c917c8689ad60eb
   React: 1fe0eb13d90b625d94c3b117c274dcfd2e760e11
   react-native-onfido-sdk: 9c1a642c278242f805b44b7a97b8690d46ab556c
   yoga: b1ce48b6cf950b98deae82838f5173ea7cf89e85

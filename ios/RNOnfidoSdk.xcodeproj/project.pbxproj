@@ -27,6 +27,7 @@
 /* Begin PBXFileReference section */
 		134814201AA4EA6300B7C361 /* libRNOnfidoSdk.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNOnfidoSdk.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		940830EE21BE70E900CECC45 /* Onfido.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Onfido.framework; path = ../example/ios/Pods/Onfido/Onfido.framework; sourceTree = "<group>"; };
+		9436046121EC9350009C627A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		94E2D35E21C3D2E90040BF13 /* CustomFlowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomFlowViewController.m; sourceTree = "<group>"; };
 		94E2D36021C3D2E90040BF13 /* ONFlowConfigBuilder+FlowConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ONFlowConfigBuilder+FlowConfiguration.h"; sourceTree = "<group>"; };
 		94E2D36121C3D2E90040BF13 /* ONFlowConfigBuilder+FlowConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ONFlowConfigBuilder+FlowConfiguration.m"; sourceTree = "<group>"; };
@@ -57,6 +58,7 @@
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
+				9436046121EC9350009C627A /* Images.xcassets */,
 				94E2D36221C3D2E90040BF13 /* CustomFlowViewController.h */,
 				94E2D35E21C3D2E90040BF13 /* CustomFlowViewController.m */,
 				94E2D36021C3D2E90040BF13 /* ONFlowConfigBuilder+FlowConfiguration.h */,

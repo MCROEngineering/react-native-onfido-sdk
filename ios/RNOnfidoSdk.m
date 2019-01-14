@@ -61,8 +61,8 @@ RCT_EXPORT_METHOD(startSDK:(id)json successCallback:(RCTResponseSenderBlock)succ
         
         NSDictionary *dictionary = [RCTConvert NSDictionary:self->_params];
         @try {
-            NSArray *flowSteps = dictionary[@"flowSteps"];
-            if (flowSteps && flowSteps.count > 1) {
+            NSArray *documentTypes = dictionary[@"documentTypes"];
+            if (documentTypes && documentTypes.count > 1) {
                 CustomFlowViewController *customFlowVC = [[CustomFlowViewController alloc] initWithParams:self->_params];
                 UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController: customFlowVC];
                 [navController.navigationBar setBarTintColor:UIColor.whiteColor];
@@ -77,7 +77,7 @@ RCT_EXPORT_METHOD(startSDK:(id)json successCallback:(RCTResponseSenderBlock)succ
                 }];
             }
         } @catch (NSException *e) {
-            self->_errorCallback([NSError errorWithDomain:@"invalid_params" code:100 userInfo:@{                                                                                               NSLocalizedDescriptionKey: @"Invalid flowSteps type"
+            self->_errorCallback([NSError errorWithDomain:@"invalid_params" code:100 userInfo:@{                                                                                               NSLocalizedDescriptionKey: @"Invalid document types"
                                                                                                }]);
         }
     });

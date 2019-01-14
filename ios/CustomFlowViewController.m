@@ -79,25 +79,25 @@
     [self.view addSubview:subtitleLabel];
 
     // options
-    NSArray *flowSteps = self.params[@"flowSteps"];
-    for (int i = 0; i < flowSteps.count; i += 1) {
-        NSInteger flowStep = [flowSteps[i] integerValue];
+    NSArray *documentTypes = self.params[@"documentTypes"];
+    for (int i = 0; i < documentTypes.count; i += 1) {
+        NSInteger documentType = [documentTypes[i] integerValue];
 
         NSInteger cellHeight = 108;
         UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         CGRect buttonFrame = CGRectMake(0, subtitleRect.origin.y + 50 + (i * cellHeight), CGRectGetWidth(self.view.frame), cellHeight);
         button.frame = buttonFrame;
-        button.tag = flowStep;
+        button.tag = documentType;
         [button addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
 
         CGRect imageViewRect = CGRectMake(24, 24, 60, 60);
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:imageViewRect];
         imageView.layer.cornerRadius = 10;
         imageView.backgroundColor = [UIColor colorWithRed:63.0f/255.0f green:93.0f/255.0f blue:138.0f/255.0f alpha:1];
-        //    imageView.image = [UIImage imageNamed:@""];
+        imageView.image = [UIImage imageNamed:@"national_id"];
         CGRect buttonTitleRect = CGRectMake(CGRectGetMaxX(imageViewRect) + 24, 44, CGRectGetWidth(buttonFrame)- (CGRectGetMaxX(imageViewRect) + 24 * 3), 20);
         UILabel *buttonTitleLabel = [[UILabel alloc] initWithFrame:buttonTitleRect];
-        buttonTitleLabel.text = [self titleForOption: flowStep];
+        buttonTitleLabel.text = [self titleForOption: documentType];
 
         UILabel *l = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(buttonFrame) - 32, 44, 12, 20)];
         l.text = @">";
@@ -115,7 +115,7 @@
 }
 
 - (void)buttonClicked:(UIButton *)sender {
-    [self.params setValue:@[@(sender.tag)] forKey:@"flowSteps"];
+    [self.params setValue:@[@(sender.tag)] forKey:@"documentTypes"];
     [ONFlowConfigBuilder create:self.params successCallback:^(ONFlowConfig *config) {
         ONFlow *flow = [[ONFlow alloc] initWithFlowConfiguration:config];
 

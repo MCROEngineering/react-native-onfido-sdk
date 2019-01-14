@@ -6,25 +6,32 @@
  */
 
 import React, {Component} from 'react';
-import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
+import {StyleSheet, Text, View, TouchableOpacity, Modal} from 'react-native';
 import RNOnfidoSdk from 'react-native-onfido-sdk';
+
+import DocumentTypesSelector from './src/DocumentTypesSelector';
 
 const data = [{
   id: 0,
   title: 'Start default flow'
-}, {
-  id: 1,
-  title: 'Start flow with single document type'
 }, {
   id: 2,
   title: 'Start flow with custom document types'
 }];
 
 const mobileSdkToken = 'test_rt3PKCL3iy2N1AUQzM0mNT5DlqhnW-w2';
-
 const applicantId = 'test';
 
+const defaultParams = {
+  token: mobileSdkToken,
+  applicantId
+};
+
 export default class App extends Component {
+
+  state = {
+    documentTypesSelectorVisible: false
+  };
 
   _onfidoSuccessResponse = () => {
 
@@ -35,23 +42,22 @@ export default class App extends Component {
   };
 
   _onItemPress = (item) => {
-    const params = {
-      token: mobileSdkToken,
-      applicantId,
-      documentTypes: [RNOnfidoSdk.DocumentTypeResidencePermit, RNOnfidoSdk.DocumentTypePassport, RNOnfidoSdk.DocumentTypeNationalIdentityCard],
-      withWelcomeScreen: false // android only
-    };
-
     switch (item.id) {
       case 0:
-        break;
-      case 1:
+        RNOnfidoSdk.startSDK(defaultParams, this._onfidoSuccessResponse, this._onfidoErrorResponse);
         break;
       case 2:
+        this.setState({ documentTypesSelectorVisible: true });
         break;
       default: break;
     }
+  };
 
+  _onDocumentTypesSelected = (selections) => {
+    const params = {
+      ...defaultParams,
+      documentTypes: selections.map(s => s.docType)
+    };
     RNOnfidoSdk.startSDK(params, this._onfidoSuccessResponse, this._onfidoErrorResponse);
   };
 
@@ -65,6 +71,12 @@ export default class App extends Component {
     return (
       <View style={styles.container}>
         {data.map(this._renderItem)}
+        <Modal visible={this.state.documentTypesSelectorVisible} transparent>
+          <DocumentTypesSelector
+            onDismiss={() => this.setState({ documentTypesSelectorVisible: false })}
+            onSelect={this._onDocumentTypesSelected}
+          />
+        </Modal>
       </View>
     );
   }
