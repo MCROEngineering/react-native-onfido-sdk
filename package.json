@@ -6,7 +6,7 @@
   },
   "homepage": "https://github.com/MCROEngineering/react-native-onfido-sdk",
   "name": "react-native-onfido-sdk",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Onfido SDK for React Native",
   "main": "index.js",
   "scripts": {
