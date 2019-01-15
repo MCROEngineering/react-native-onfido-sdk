@@ -62,6 +62,33 @@
     return title;
 }
 
+- (UIImage *)imageForDocumentType: (NSInteger) documentType {
+    NSString *imageName;
+    switch (documentType) {
+        case 0:
+            imageName = @"passport";
+            break;
+        case 1:
+            imageName = @"driving_licence";
+            break;
+        case 2:
+            imageName = @"national_id";
+            break;
+        case 3:
+            imageName = @"residence_card";
+            break;
+        default: break;
+    }
+    
+    NSBundle *bundle = [self getResourcesBundle];
+    return [UIImage imageNamed:imageName inBundle:bundle compatibleWithTraitCollection:nil];
+}
+
+- (NSBundle *)getResourcesBundle {
+    NSString *resourcePath = [NSBundle.mainBundle pathForResource:@"Resources" ofType:@"bundle"];
+    return [NSBundle bundleWithPath:resourcePath];
+}
+
 - (void)setupContent {
     // title
     CGRect titleRect = CGRectMake(24, 92, CGRectGetWidth(self.view.frame) - 32, 27);
@@ -90,21 +117,27 @@
         button.tag = documentType;
         [button addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
 
-        CGRect imageViewRect = CGRectMake(24, 24, 60, 60);
+        CGRect imageViewContainerRect = CGRectMake(24, 24, 60, 60);
+        UIView *imageViewContainer = [[UIView alloc] initWithFrame:imageViewContainerRect];
+        CGRect imageViewRect = CGRectMake(16, 16, 28, 28);
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:imageViewRect];
-        imageView.layer.cornerRadius = 10;
-        imageView.backgroundColor = [UIColor colorWithRed:63.0f/255.0f green:93.0f/255.0f blue:138.0f/255.0f alpha:1];
-        imageView.image = [UIImage imageNamed:@"national_id"];
-        CGRect buttonTitleRect = CGRectMake(CGRectGetMaxX(imageViewRect) + 24, 44, CGRectGetWidth(buttonFrame)- (CGRectGetMaxX(imageViewRect) + 24 * 3), 20);
+        imageViewContainer.layer.cornerRadius = 10;
+        imageViewContainer.backgroundColor = [UIColor colorWithRed:63.0f/255.0f green:93.0f/255.0f blue:138.0f/255.0f alpha:1];
+        imageView.image = [self imageForDocumentType:documentType];
+        [imageViewContainer addSubview:imageView];
+        
+        CGRect buttonTitleRect = CGRectMake(CGRectGetMaxX(imageViewContainerRect) + 16, 44, CGRectGetWidth(buttonFrame)- (CGRectGetMaxX(imageViewContainerRect) + 24 * 3), 20);
         UILabel *buttonTitleLabel = [[UILabel alloc] initWithFrame:buttonTitleRect];
         buttonTitleLabel.text = [self titleForOption: documentType];
 
-        UILabel *l = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(buttonFrame) - 32, 44, 12, 20)];
-        l.text = @">";
+        UIImageView *arrowRightImageView = [[UIImageView alloc] initWithFrame:CGRectMake(CGRectGetMaxX(buttonFrame) - 32, 44, 12, 20)];
+        NSBundle *bundle = [self getResourcesBundle];
+        UIImage *arrowRightImage = [UIImage imageNamed:@"arrow_right" inBundle:bundle compatibleWithTraitCollection:nil];
+        arrowRightImageView.image = arrowRightImage;
 
-        [button addSubview:imageView];
+        [button addSubview:imageViewContainer];
         [button addSubview:buttonTitleLabel];
-        [button addSubview:l];
+        [button addSubview:arrowRightImageView];
 
         [self.view addSubview:button];
     }

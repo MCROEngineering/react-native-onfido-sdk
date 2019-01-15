@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		94CE267421EDEF5000135716 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9436046121EC9350009C627A /* Images.xcassets */; };
+		94CE26BF21EDFF7800135716 /* Resources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 94CE266C21EDEEE600135716 /* Resources.bundle */; };
 		94E2D36321C3D2E90040BF13 /* CustomFlowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94E2D35E21C3D2E90040BF13 /* CustomFlowViewController.m */; };
 		94E2D36421C3D2E90040BF13 /* ONFlowConfigBuilder+FlowConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 94E2D36121C3D2E90040BF13 /* ONFlowConfigBuilder+FlowConfiguration.m */; };
 		B3E7B58A1CC2AC0600A0062D /* RNOnfidoSdk.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* RNOnfidoSdk.m */; };
@@ -188,6 +189,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				94CE267421EDEF5000135716 /* Images.xcassets in Resources */,
+				94CE26BF21EDFF7800135716 /* Resources.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,7 +9,7 @@ PODS:
   - Onfido (10.2.0)
   - React (0.57.7):
     - React/Core (= 0.57.7)
-  - react-native-onfido-sdk (0.0.3):
+  - react-native-onfido-sdk (0.0.5):
     - Onfido
     - React
   - React/Core (0.57.7):
@@ -86,7 +86,7 @@ SPEC CHECKSUMS:
   glog: e8acf0ebbf99759d3ff18c86c292a5898282dcde
   Onfido: be1599fe997fd7600855b8db2c917c8689ad60eb
   React: 1fe0eb13d90b625d94c3b117c274dcfd2e760e11
-  react-native-onfido-sdk: 9c1a642c278242f805b44b7a97b8690d46ab556c
+  react-native-onfido-sdk: 6ed0d5713f52833ea64994af655dfbd229923616
   yoga: b1ce48b6cf950b98deae82838f5173ea7cf89e85
 
 PODFILE CHECKSUM: 0c2cd26d7135ffdb9dbc279719a7b9a0560a7a5a
