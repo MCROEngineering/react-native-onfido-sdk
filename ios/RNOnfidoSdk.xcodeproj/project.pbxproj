@@ -7,10 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		94CE267421EDEF5000135716 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9436046121EC9350009C627A /* Images.xcassets */; };
 		94E2D36321C3D2E90040BF13 /* CustomFlowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94E2D35E21C3D2E90040BF13 /* CustomFlowViewController.m */; };
 		94E2D36421C3D2E90040BF13 /* ONFlowConfigBuilder+FlowConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 94E2D36121C3D2E90040BF13 /* ONFlowConfigBuilder+FlowConfiguration.m */; };
 		B3E7B58A1CC2AC0600A0062D /* RNOnfidoSdk.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* RNOnfidoSdk.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		94CE267221EDEF0D00135716 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 58B511D31A9E6C8500147676 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 94CE266B21EDEEE600135716;
+			remoteInfo = Resources;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		58B511D91A9E6C8500147676 /* CopyFiles */ = {
@@ -28,6 +39,8 @@
 		134814201AA4EA6300B7C361 /* libRNOnfidoSdk.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNOnfidoSdk.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		940830EE21BE70E900CECC45 /* Onfido.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Onfido.framework; path = ../example/ios/Pods/Onfido/Onfido.framework; sourceTree = "<group>"; };
 		9436046121EC9350009C627A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		94CE266C21EDEEE600135716 /* Resources.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Resources.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		94CE266E21EDEEE600135716 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		94E2D35E21C3D2E90040BF13 /* CustomFlowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomFlowViewController.m; sourceTree = "<group>"; };
 		94E2D36021C3D2E90040BF13 /* ONFlowConfigBuilder+FlowConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ONFlowConfigBuilder+FlowConfiguration.h"; sourceTree = "<group>"; };
 		94E2D36121C3D2E90040BF13 /* ONFlowConfigBuilder+FlowConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ONFlowConfigBuilder+FlowConfiguration.m"; sourceTree = "<group>"; };
@@ -38,6 +51,13 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		58B511D81A9E6C8500147676 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		94CE266921EDEEE600135716 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -65,8 +85,10 @@
 				94E2D36121C3D2E90040BF13 /* ONFlowConfigBuilder+FlowConfiguration.m */,
 				B3E7B5881CC2AC0600A0062D /* RNOnfidoSdk.h */,
 				B3E7B5891CC2AC0600A0062D /* RNOnfidoSdk.m */,
+				94CE266D21EDEEE600135716 /* Resources */,
 				134814211AA4EA7D00B7C361 /* Products */,
 				940830ED21BE70E900CECC45 /* Frameworks */,
+				94CE266C21EDEEE600135716 /* Resources.bundle */,
 			);
 			sourceTree = "<group>";
 		};
@@ -76,6 +98,14 @@
 				940830EE21BE70E900CECC45 /* Onfido.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		94CE266D21EDEEE600135716 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				94CE266E21EDEEE600135716 /* Info.plist */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -92,11 +122,29 @@
 			buildRules = (
 			);
 			dependencies = (
+				94CE267321EDEF0D00135716 /* PBXTargetDependency */,
 			);
 			name = RNOnfidoSdk;
 			productName = RCTDataManager;
 			productReference = 134814201AA4EA6300B7C361 /* libRNOnfidoSdk.a */;
 			productType = "com.apple.product-type.library.static";
+		};
+		94CE266B21EDEEE600135716 /* Resources */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 94CE267121EDEEE600135716 /* Build configuration list for PBXNativeTarget "Resources" */;
+			buildPhases = (
+				94CE266821EDEEE600135716 /* Sources */,
+				94CE266921EDEEE600135716 /* Frameworks */,
+				94CE266A21EDEEE600135716 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Resources;
+			productName = Resources;
+			productReference = 94CE266C21EDEEE600135716 /* Resources.bundle */;
+			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
 
@@ -109,6 +157,10 @@
 				TargetAttributes = {
 					58B511DA1A9E6C8500147676 = {
 						CreatedOnToolsVersion = 6.1.1;
+					};
+					94CE266B21EDEEE600135716 = {
+						CreatedOnToolsVersion = 10.1;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -125,9 +177,21 @@
 			projectRoot = "";
 			targets = (
 				58B511DA1A9E6C8500147676 /* RNOnfidoSdk */,
+				94CE266B21EDEEE600135716 /* Resources */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		94CE266A21EDEEE600135716 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				94CE267421EDEF5000135716 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		58B511D71A9E6C8500147676 /* Sources */ = {
@@ -140,7 +204,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		94CE266821EDEEE600135716 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		94CE267321EDEF0D00135716 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 94CE266B21EDEEE600135716 /* Resources */;
+			targetProxy = 94CE267221EDEF0D00135716 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		58B511ED1A9E6C8500147676 /* Debug */ = {
@@ -262,6 +341,76 @@
 			};
 			name = Release;
 		};
+		94CE266F21EDEEE600135716 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = Resources/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mcro.onfido.Resources;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		94CE267021EDEEE600135716 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = Resources/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mcro.onfido.Resources;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -279,6 +428,15 @@
 			buildConfigurations = (
 				58B511F01A9E6C8500147676 /* Debug */,
 				58B511F11A9E6C8500147676 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		94CE267121EDEEE600135716 /* Build configuration list for PBXNativeTarget "Resources" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				94CE266F21EDEEE600135716 /* Debug */,
+				94CE267021EDEEE600135716 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
