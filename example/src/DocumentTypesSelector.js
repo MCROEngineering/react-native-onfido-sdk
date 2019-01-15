@@ -49,7 +49,7 @@ const docTypes = [{
 }, {
   id: 3,
   title: 'Residence Permit Card',
-  docType: RNOnfidoSdk.DocumentTypeResidencePermitCard
+  docType: RNOnfidoSdk.DocumentTypeResidencePermit
 }];
 
 class DocumentTypesSelector extends React.Component {

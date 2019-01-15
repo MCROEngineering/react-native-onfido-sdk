@@ -54,11 +54,15 @@ export default class App extends Component {
   };
 
   _onDocumentTypesSelected = (selections) => {
-    const params = {
-      ...defaultParams,
-      documentTypes: selections.map(s => s.docType)
-    };
-    RNOnfidoSdk.startSDK(params, this._onfidoSuccessResponse, this._onfidoErrorResponse);
+    this.setState({ documentTypesSelectorVisible: false }, () => {
+      setTimeout(() => {
+        const params = {
+          ...defaultParams,
+          documentTypes: selections.map(s => s.docType)
+        };
+        RNOnfidoSdk.startSDK(params, this._onfidoSuccessResponse, this._onfidoErrorResponse);
+      })
+    })
   };
 
   _renderItem = item => (
