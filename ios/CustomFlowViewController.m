@@ -130,7 +130,7 @@
         UILabel *buttonTitleLabel = [[UILabel alloc] initWithFrame:buttonTitleRect];
         buttonTitleLabel.text = [self titleForOption: documentType];
 
-        UIImageView *arrowRightImageView = [[UIImageView alloc] initWithFrame:CGRectMake(CGRectGetMaxX(buttonFrame) - 32, 44, 12, 20)];
+        UIImageView *arrowRightImageView = [[UIImageView alloc] initWithFrame:CGRectMake(CGRectGetMaxX(buttonFrame) - 36, 44, 20, 20)];
         NSBundle *bundle = [self getResourcesBundle];
         UIImage *arrowRightImage = [UIImage imageNamed:@"arrow_right" inBundle:bundle compatibleWithTraitCollection:nil];
         arrowRightImageView.image = arrowRightImage;

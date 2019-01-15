@@ -9,7 +9,7 @@ PODS:
   - Onfido (10.2.0)
   - React (0.57.7):
     - React/Core (= 0.57.7)
-  - react-native-onfido-sdk (0.0.5):
+  - react-native-onfido-sdk (0.0.6):
     - Onfido
     - React
   - React/Core (0.57.7):
