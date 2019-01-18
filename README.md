@@ -1,45 +1,172 @@
-
 # react-native-onfido-sdk
+iOS and Android wrapper for [onfido-ios-sdk](https://github.com/onfido/onfido-ios-sdk) and [onfido-android-sdk](https://github.com/onfido/onfido-android-sdk).
 
-## Getting started
+## Installation
+Install the npm package
+```bash
+  npm install react-native-onfido-sdk
+```
 
-`$ npm install react-native-onfido-sdk --save`
+or
 
-### Mostly automatic installation
+```bash
+  yarn add react-native-onfido-sdk
+```
 
-`$ react-native link react-native-onfido-sdk`
+### iOS Setup
 
-### Manual installation
+If you're already using Cocoapods, add the following to your Podfile
 
+```
+pod 'react-native-onfido-sdk', path: '../node_modules/react-native-onfido-sdk'
+```
 
-#### iOS
+Otherwise, setup Podfile according to [react native documentation](https://facebook.github.io/react-native/docs/integration-with-existing-apps), so the Podfile will look like this:
+```
+source 'https://github.com/CocoaPods/Specs.git'
 
-1. In XCode, in the project navigator, right click `Libraries` ➜ `Add Files to [your project's name]`
-2. Go to `node_modules` ➜ `react-native-onfido-sdk` and add `RNOnfidoSdk.xcodeproj`
-3. In XCode, in the project navigator, select your project. Add `libRNOnfidoSdk.a` to your project's `Build Phases` ➜ `Link Binary With Libraries`
-4. Run your project (`Cmd+R`)<
+platform :ios, '11.0'
 
-#### Android
+target 'YourTargetName' do
+    pod 'React', :path => '../node_modules/react-native', :subspecs => [
+        'Core',
+        'CxxBridge', # Include this for RN >= 0.47
+        'DevSupport', # Include this to enable In-App Devmenu if RN >= 0.43
+        'RCTText',
+        'RCTNetwork',
+        'RCTWebSocket', # Needed for debugging
+        'RCTAnimation', # Needed for FlatList and animations running on native UI thread
+        ]
+    # Explicitly include Yoga if you are using RN >= 0.42.0
+    pod 'yoga', :path => '../node_modules/react-native/ReactCommon/yoga'
+    pod 'DoubleConversion', :podspec => '../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec'
+    pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
+    pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
-1. Open up `android/app/src/main/java/[...]/MainActivity.java`
-  - Add `import com.reactlibrary.RNOnfidoSdkPackage;` to the imports at the top of the file
-  - Add `new RNOnfidoSdkPackage()` to the list returned by the `getPackages()` method
-2. Append the following lines to `android/settings.gradle`:
-  	```
-  	include ':react-native-onfido-sdk'
-  	project(':react-native-onfido-sdk').projectDir = new File(rootProject.projectDir, 	'../node_modules/react-native-onfido-sdk/android')
-  	```
-3. Insert the following lines inside the dependencies block in `android/app/build.gradle`:
-  	```
-      compile project(':react-native-onfido-sdk')
-  	```
+    pod 'react-native-onfido-sdk', path: '../node_modules/react-native-onfido-sdk'
 
+end
+```
+
+Remember to replace *YourTargetName* with your actual target name.
+
+Next, run ```pod install```.
+
+Because Onfido sdk is written in Swift, we also need to go to *YourTargetName -> Build Settings* and search for __Always Embed Swift Standard Libraries__ and set it to __YES__. 
+
+### Android Setup
+
+1. Link the library by running
+```bash
+react-native link
+```
+
+2. Add
+```
+maven {
+        url  "https://dl.bintray.com/onfido/maven"
+}
+```
+
+into
+```
+allprojects {
+    repositories {
+        ...
+        maven {
+                url  "https://dl.bintray.com/onfido/maven"
+        }
+    }
+}
+```
+in *android/build.gradle*
+
+3. Enable multidex by adding ```multiDexEnabled true``` in *app/build.gradle*:
+
+```
+android {
+    ...
+    defaultConfig {
+        ...
+        multiDexEnabled true
+    }
+}
+```
 
 ## Usage
+First, import the module:
 ```javascript
-import RNOnfidoSdk from 'react-native-onfido-sdk';
-
-// TODO: What to do with the module?
-RNOnfidoSdk;
+import RNOnfidoSdk from 'react-native-onfido-sdk'
 ```
-  
+Then, launch the sdk by using the following method:
+
+`RNOnfidoSdk.startSDK(params, successCallback, errorCallback);`, where:
+
+**params**
+- token (string, onfido mobile sdk token) __required__
+- applicantId (string, applicant id that needs to come from your backend implementation after an applicant has been created) __required__
+- documentTypes (array)
+
+By default, `onfido-ios-sdk` and `onfido-android-sdk` can only be used either with all document types, or with a single document type.
+We've added the possibility to specify exactly which document type checks your app might use.
+If *documentTypes* is `undefined`, the sdk will launch with default document types (Passport, Driver's licence, National Id, Residence permit).
+The following document types are defined to be used: 
+- RNOnfidoSdk.DocumentTypePassport
+- RNOnfidoSdk.DocumentTypeDrivingLicence
+- RNOnfidoSdk.DocumentTypeNationalIdentityCard
+- RNOnfidoSdk.DocumentTypeResidencePermit
+
+
+Example:
+```js
+const params = {
+  token: 'test...',
+  applicantId: 'test',
+  documentTypes: [RNOnfidoSdk.DocumentTypePassport, RNOnfidoSdk.DocumentTypeNationalIdentityCard]
+}
+```
+In this example we opt in only for passport and national id card checks.
+
+**successCallback**
+
+Example:
+```js
+const successCallback = () => {
+  ...
+}
+````
+
+**errorCallback**
+
+Example:
+```js
+const errorCallback = (error) => {
+  ...
+}
+````
+
+## Example
+To see more of `react-native-onfido-sdk` in action you can check out the source in the `example` folder.
+
+```bash
+cd example
+npm install
+```
+
+###iOS
+
+```bash
+cd ios
+pod install
+cd ..
+react-native run-ios
+```
+
+###Android
+
+```bash
+react-native run-android
+```
+
+## License
+`react-native-onfido-sdk` is available under the MIT license. See the LICENCE file for more info.
