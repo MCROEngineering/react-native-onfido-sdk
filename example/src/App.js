@@ -6,10 +6,10 @@
  */
 
 import React, {Component} from 'react';
-import {StyleSheet, Text, View, TouchableOpacity, Modal} from 'react-native';
+import {StyleSheet, Text, View, TouchableOpacity, Modal, Platform} from 'react-native';
 import RNOnfidoSdk from 'react-native-onfido-sdk';
 
-import DocumentTypesSelector from './src/DocumentTypesSelector';
+import DocumentTypesSelector from './DocumentTypesSelector';
 
 const data = [{
   id: 0,
@@ -65,6 +65,10 @@ export default class App extends Component {
     })
   };
 
+  _renderStepsCustomization = () => {
+
+  };
+
   _renderItem = item => (
     <TouchableOpacity key={item.id} style={styles.listItem} onPress={() => this._onItemPress(item)}>
       <Text style={styles.listItemText}>{item.title}</Text>
@@ -81,6 +85,7 @@ export default class App extends Component {
             onSelect={this._onDocumentTypesSelected}
           />
         </Modal>
+        {Platform.OS === 'android' && this._renderStepsCustomization()}
       </View>
     );
   }
