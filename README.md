@@ -153,7 +153,7 @@ cd example
 npm install
 ```
 
-###iOS
+### iOS
 
 ```bash
 cd ios
@@ -162,7 +162,7 @@ cd ..
 react-native run-ios
 ```
 
-###Android
+### Android
 
 ```bash
 react-native run-android
