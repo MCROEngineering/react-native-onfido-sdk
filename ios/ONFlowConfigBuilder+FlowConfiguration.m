@@ -60,11 +60,18 @@
         [configBuilder withDocumentStep];
     }
 
-    [configBuilder withFaceStepOfVariant:ONFaceStepVariantPhoto];
-    
+    NSError *variantConfigError = NULL;
+    Builder *variantBuilder = [ONFaceStepVariantConfig builder];
+    [variantBuilder withPhotoCaptureWithConfig: NULL];
+    [configBuilder withFaceStepOfVariant: [variantBuilder buildAndReturnError: &variantConfigError]];
+
+    if (variantConfigError != NULL) {
+        return errorCallback(variantConfigError);
+    }
+
     NSError *configError = NULL;
     ONFlowConfig *config = [configBuilder buildAndReturnError:&configError];
-    
+
     if (configError == NULL) {
         successCallback(config);
     } else {

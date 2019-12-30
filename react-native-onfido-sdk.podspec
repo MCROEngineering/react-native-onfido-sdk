@@ -22,5 +22,5 @@ Pod::Spec.new do |s|
   }
 
   s.dependency 'React'
-  s.dependency 'Onfido'
+  s.dependency 'Onfido', '~> 12.0'
 end
